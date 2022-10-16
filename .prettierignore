@@ -1,2 +1,3 @@
-*.config.js
-.prettierrc
+vite.config.ts
+tailwind.config.js
+postcss.config.js
