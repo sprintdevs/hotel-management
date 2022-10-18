@@ -9,6 +9,5 @@ export default defineConfig({
       refresh: true
     }),
     vue()
-  ],
-  base: 'http://localhost:8001'
+  ]
 })

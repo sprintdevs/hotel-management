@@ -11,12 +11,8 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
-    "ts-node": {
-      "moduleTypes": {
-        "postcss.config.ts": "cjs"
-      }
-    }
+    "skipLibCheck": true
   },
+  "include": [ "**/*" ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
