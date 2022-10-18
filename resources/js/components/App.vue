@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useCounter } from '../store/counter'
 
-let title = ref('World')
+const counterStore = useCounter()
+
+const incrementCount = () => counterStore.increment()
 </script>
 
 <template>
     <main class="h-screen flex justify-center">
-        <div class="flex flex-col">
+        <div class="flex flex-col space-y-4">
             <ul class="mx-auto flex space-x-4">
                 <li><RouterLink to="/">Home</RouterLink></li>
                 <li><RouterLink to="/about">About</RouterLink></li>
@@ -14,6 +16,10 @@ let title = ref('World')
             <hr />
             <div class="mt-8">
                 <RouterView />
+            </div>
+            <div class="flex justify-center items-center w-full">
+                <button class="bg-lime-500 px-3 py-1 rounded-md text-gray-800" @click="incrementCount">Count</button>
+                <span class="ml-2 flex-1 text-center">{{ counterStore.count }}</span>
             </div>
         </div>
     </main>
