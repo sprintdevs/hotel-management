@@ -1,0 +1,106 @@
+services:
+    php:
+        build:
+            context: ./dockerfiles
+            dockerfile: php.dockerfile
+        container_name: ${DOCKER_NAME:-app}_php
+        volumes:
+            - .:/var/www/html:delegated
+        networks:
+            - network
+
+    nginx:
+        build:
+            context: ./dockerfiles
+            dockerfile: nginx.dockerfile
+        container_name: ${DOCKER_NAME:-app}_nginx
+        ports:
+            - '${NGINX_PORT:-8080}:80'
+        volumes:
+            - .:/var/www/html:delegated
+        depends_on:
+            - php
+            - mysql
+            - redis
+        networks:
+            - network
+
+    redis:
+        image: redis:alpine
+        container_name: ${DOCKER_NAME:-app}_redis
+        volumes:
+            - redis_data:/data
+        ports:
+            - '${REDIS_PORT:-6379}:6379'
+        networks:
+            - network
+
+    mysql:
+        image: mariadb:10.6
+        container_name: ${DOCKER_NAME:-app}_mysql
+        volumes:
+            - mysql_data:/var/lib/mysql
+        restart: unless-stopped
+        tty: true
+        ports:
+            - ${DB_PORT:-3306}:3306
+        environment:
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        networks:
+            - network
+
+    composer:
+        build:
+            context: ./dockerfiles
+            dockerfile: composer.dockerfile
+        container_name: ${DOCKER_NAME:-app}_composer
+        volumes:
+            - .:/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - php
+        user: laravel
+        entrypoint: ['composer', '--ignore-platform-reqs']
+        networks:
+            - network
+
+    yarn:
+        image: node:16.18.0
+        container_name: ${DOCKER_NAME:-app}_yarn
+        ports:
+            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+        volumes:
+            - .:/var/www/html
+        working_dir: /var/www/html
+        entrypoint: ['yarn']
+        networks:
+            - network
+
+    artisan:
+        build:
+            context: ./dockerfiles
+            dockerfile: php.dockerfile
+        container_name: ${DOCKER_NAME:-app}_artisan
+        volumes:
+            - .:/var/www/html:delegated
+        working_dir: /var/www/html
+        entrypoint: ['php', '/var/www/html/artisan']
+        networks:
+            - network
+
+networks:
+    network:
+        name: ${DOCKER_NAME:-app}_network
+
+volumes:
+    redis_data:
+        name: ${DOCKER_NAME:-app}_redis
+    mysql_data:
+        name: ${DOCKER_NAME:-app}_mysql
