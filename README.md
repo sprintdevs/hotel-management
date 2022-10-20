@@ -12,6 +12,9 @@
 -   `alias dcr="docker-compose run --rm --service-ports"`
 -   `dcr composer install`
 -   `dcr artisan key:generate` only if .env is copied from .env.example
+-   `dcr artisan migrate`
+-   `dcr artisan db:seed`
+-   `dcr artisan l5:generate`
 -   `dcr yarn`
 -   `dcr yarn dev`
 -   `http://localhost:<NGINX_PORT>` visit from browser

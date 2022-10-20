@@ -15,7 +15,10 @@ export default defineConfig(({_, mode}) => {
     ],
     server: {
       port: env.VITE_PORT || 5173,
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      hmr: {
+        host: 'localhost'
+      }
     }
   }
 })
