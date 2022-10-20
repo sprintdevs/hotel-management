@@ -13,6 +13,6 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true
   },
-  "include": [ "**/*" ],
+  "exclude": ["vendor"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
