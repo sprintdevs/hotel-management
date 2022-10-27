@@ -3,7 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{ env('APP_NAME') ?? 'Laravel' }}</title>
+	<link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16"/>
+	<title>{{ env('APP_NAME') ?? 'Hotel Management' }}</title>
 
 	@vite('resources/css/app.css')
 </head>

@@ -13,10 +13,10 @@ class TokenAuthenticationController extends Controller
     /**
      * @OA\Post(
      *  operationId="createToken",
-     *  summary="Create token",
-     *  description="Issue API token to authenticate",
+     *  summary="Create new token",
+     *  description="Issue new API token to user",
      *  tags={"authenticate"},
-     *  path="/api/token",
+     *  path="/api/tokens/create",
      *  @OA\RequestBody(
      *    description="User credentials",
      *    required=true,
@@ -30,7 +30,7 @@ class TokenAuthenticationController extends Controller
      *     response="200",
      *     description="Successful operation",
      *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="email",property="email",example="john@email.com"),
+     *       @OA\Property(type="string",title="message",property="message",example="Authentication token created."),
      *       @OA\Property(type="string",title="api_token",property="api_token",example="<TOKEN>"),
      *    ),
      *   ),
@@ -38,7 +38,7 @@ class TokenAuthenticationController extends Controller
      *     response="422",
      *     description="Unprocessable Content",
      *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="message",property="message",example="These credentials do not match our records."),
+     *       @OA\Property(type="string",title="message",property="message",example="The provided credentials are incorrect."),
      *       @OA\Property(
      *         type="object",title="errors",property="errors", 
      *         @OA\Property(property="email", type="array",
@@ -70,8 +70,70 @@ class TokenAuthenticationController extends Controller
         $token = $user->createToken($request->device_name)->plainTextToken;
 
         return response()->json([
-            'email' => $user->email,
+            'message' => 'Authentication token created.',
             'api_token' => $token
         ]);
+    }
+
+    /**
+     * @OA\Post(
+     *  operationId="revokeToken",
+     *  summary="Revoke current token",
+     *  description="Revoke authenticated user's current token",
+     *  tags={"authenticate"},
+     *  security={ {"sanctum": {} }},
+     *  path="/api/tokens/revoke",
+     *   @OA\Response(
+     *     response="200",
+     *     description="Successful operation",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="Authentication token revoked for current session."),
+     *    ),
+     *   ),
+     *   @OA\Response(
+     *     response="401",
+     *     description="Unauthorized access",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
+     *    ),
+     *   ),
+     * )
+     */
+    public function destroy(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Authentication token revoked for current session.']);
+    }
+
+    /**
+     * @OA\Post(
+     *  operationId="revokeAllTokens",
+     *  summary="Revoke all tokens",
+     *  description="Revoke authenticated user's all tokens",
+     *  tags={"authenticate"},
+     *  security={ {"sanctum": {} }},
+     *  path="/api/tokens/revoke-all",
+     *   @OA\Response(
+     *     response="200",
+     *     description="Successful operation",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="All authentication tokens revoked."),
+     *    ),
+     *   ),
+     *   @OA\Response(
+     *     response="401",
+     *     description="Unauthorized access",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
+     *    ),
+     *   ),
+     * )
+     */
+    public function destroyAll(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json(['message' => 'All authentication tokens revoked.']);
     }
 }
