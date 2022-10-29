@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import vue from '@vitejs/plugin-vue'
+import path from 'path'
 
 export default defineConfig(({_, mode}) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -19,6 +20,11 @@ export default defineConfig(({_, mode}) => {
       hmr: {
         host: 'localhost'
       }
-    }
+    },
+    resolve: {
+      alias: {
+        '@/': `${path.resolve(__dirname, 'resources/js')}/`
+      },
+  },
   }
 })
