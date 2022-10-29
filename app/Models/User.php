@@ -74,4 +74,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function facility()
+    {
+        return $this->hasOne(Facility::class);
+    }
 }
