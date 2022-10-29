@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
+            $table->string('street');
             $table->string('city');
             $table->string('state');
             $table->bigInteger('zip');

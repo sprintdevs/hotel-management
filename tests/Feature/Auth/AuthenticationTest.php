@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -20,7 +21,8 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertNoContent();
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson(['message' => 'Logged in successfully.']);
     }
 
     public function test_users_can_not_authenticate_with_invalid_password()

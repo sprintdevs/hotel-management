@@ -16,30 +16,10 @@ use Laravel\Sanctum\HasApiTokens;
  *   @OA\Property(type="integer",title="id",property="id",example="1"),
  *   @OA\Property(type="string",title="name",property="name",example="John Doe"),
  *   @OA\Property(type="string",title="email",property="email",example="john@email.com"),
- *   @OA\Property(type="dateTime",title="email_verified_at",property="email_verified_at",example="2022-07-04T02:41:42.336Z"),
- *   @OA\Property(type="dateTime",title="created_at",property="created_at",example="2022-07-04T02:41:42.336Z"),
- *   @OA\Property(type="dateTime",title="updated_at",property="updated_at",example="2022-07-04T02:41:42.336Z"),
+ *   @OA\Property(type="timestamp",title="email_verified_at",property="email_verified_at",example="2022-07-04T02:41:42.336Z"),
+ *   @OA\Property(type="timestamp",title="created_at",property="created_at",example="2022-07-04T02:41:42.336Z"),
+ *   @OA\Property(type="timestamp",title="updated_at",property="updated_at",example="2022-07-04T02:41:42.336Z"),
  * )
- * 
- * @OA\Schema(
- *   schema="Users",
- *   title="Users",
- *   @OA\Property(title="data",property="data",type="array",
- *     @OA\Items(type="object",ref="#/components/schemas/User"),
- *   )
- * )
- * 
- * @OA\Parameter(
- *      parameter="User--id",
- *      in="path",
- *      name="User_id",
- *      required=true,
- *      description="Id of User",
- *      @OA\Schema(
- *          type="integer",
- *          example="1",
- *      )
- * ),
  */
 class User extends Authenticatable
 {
