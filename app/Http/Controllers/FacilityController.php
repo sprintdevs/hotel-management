@@ -8,6 +8,96 @@ use Symfony\Component\HttpFoundation\Response;
 class FacilityController extends Controller
 {
     /**
+     * @OA\Get(
+     *  path="/api/facilities",
+     *  operationId="indexFacility",
+     *  tags={"facilities"},
+     *  summary="Get list of facility",
+     *  description="Returns list of facility",
+     *  security={ {"sanctum": {} }},
+     *  @OA\Response(response=200, description="Successful operation",
+     *    @OA\JsonContent(
+     *      type="array",
+     *      @OA\Items(
+     *          @OA\Property(
+     *              property="id",
+     *              type="integer",
+     *              example=1
+     *          ),
+     *          @OA\Property(
+     *              property="name",
+     *              type="string",
+     *              example="Radisson Blu"
+     *          ),
+     *          @OA\Property(
+     *              property="street",
+     *              type="string",
+     *              example="House#14, Road#03, Block - B, Banasree"
+     *          ),
+     *          @OA\Property(
+     *              property="city",
+     *              type="string",
+     *              example="Dhaka"
+     *          ),
+     *          @OA\Property(
+     *              property="state",
+     *              type="string",
+     *              example="Dhaka"
+     *          ),
+     *          @OA\Property(
+     *              property="zip",
+     *              type="integer",
+     *              example="1219"
+     *          ),
+     *          @OA\Property(
+     *              property="phone",
+     *              type="string",
+     *              example="+8801701010101"
+     *          ),
+     *          @OA\Property(
+     *              property="email",
+     *              type="string",
+     *              example="radisson@gmail.com"
+     *          ),
+     *          @OA\Property(
+     *              property="manager_id",
+     *              type="integer",
+     *              example="1"
+     *          ),
+     *          @OA\Property(
+     *              property="created_at",
+     *              type="string",
+     *              example="2022-11-01T18:43:40.000000Z"
+     *          ),
+     *          @OA\Property(
+     *              property="updated_at",
+     *              type="string",
+     *              example="2022-11-01T18:43:40.000000Z"
+     *          ),
+     *      ),
+     *     ),
+     *    ),
+     *   @OA\Response(
+     *     response="401",
+     *     description="Unauthorized access",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
+     *    ),
+     *   ),
+     *  ),
+     * )
+     *
+     * Display a listing of facility.
+     * @return JsonResponse
+     */
+    public function index()
+    {
+        $facilities = Facility::all();
+
+        return $facilities->toJson(JSON_PRETTY_PRINT);
+    }
+
+    /**
      * @OA\Post(
      *  operationId="storeFacility",
      *  summary="Create new Facility",
@@ -53,7 +143,7 @@ class FacilityController extends Controller
     {
         Facility::create($this->validatedData());
 
-        return response()->json(["message"=> "Facility created successfully."])
+        return response()->json(["message" => "Facility created successfully."])
             ->setStatusCode(Response::HTTP_CREATED);
     }
 
@@ -65,9 +155,9 @@ class FacilityController extends Controller
     public function validatedData()
     {
         return request()->validate([
-            "name"=> 'required',
-            "street"=> 'required',
-            "city"=> 'required',
+            "name" => 'required',
+            "street" => 'required',
+            "city" => 'required',
             "state" => 'required',
             "zip" => 'required',
             "phone" => 'required',

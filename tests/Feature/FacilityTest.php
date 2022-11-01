@@ -24,14 +24,27 @@ class FacilityTest extends TestCase
     }
 
     /** @test **/
+    public function a_list_of_facilities_can_be_fetched_for_the_authenticated_user()
+    {
+        Sanctum::actingAs($this->user);
+
+        Facility::factory()->create();
+
+        $response = $this->getJson('/api/facilities');
+
+        $response->assertJsonCount(1);
+        $response->assertStatus(Response::HTTP_OK);
+    }
+
+    /** @test **/
     public function a_facility_can_be_created()
     {
         Sanctum::actingAs($this->user);
 
         $response = $this->postJson('/api/facilities', $this->facilityData());
-        
+
         $response->assertStatus(Response::HTTP_CREATED);
-        $response->assertJson(["message"=> "Facility created successfully."]);
+        $response->assertJson(["message" => "Facility created successfully."]);
         $this->assertCount(1, Facility::all());
         $this->assertEquals("Radisson Blu", Facility::first()->name);
     }
@@ -43,11 +56,11 @@ class FacilityTest extends TestCase
 
         $requiredFields = collect(['name', 'street', 'city', 'state', 'zip', 'phone', 'email', 'manager_id']);
 
-        $requiredFields->map(function($field) {
+        $requiredFields->map(function ($field) {
             $response = $this->postJson('/api/facilities', array_merge($this->facilityData(), [
                 $field => ''
             ]));
-    
+
             $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
         });
     }
@@ -55,9 +68,9 @@ class FacilityTest extends TestCase
     public function facilityData()
     {
         return [
-            "name"=>"Radisson Blu",
-            "street"=>"House#14, Road#03, Block - B, Banasree",
-            "city"=> "Dhaka",
+            "name" => "Radisson Blu",
+            "street" => "House#14, Road#03, Block - B, Banasree",
+            "city" => "Dhaka",
             "state" => "Dhaka",
             "zip" => "1219",
             "phone" => "+8801701010101",
