@@ -1,66 +1,93 @@
 <script setup lang="ts"></script>
 <template>
-    <head>
-        <title>ADD FACILITY</title>
-    </head>
+    <form action="submit" class="space-y-8 divide-y divide-gray-200">
+        <div class="pt-8">
+            <div>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Add Facility</h3>
+            </div>
 
-    <body>
-        <form>
-            <div>  
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name">
-            </div>
-            <div>
-                <h3>Address</h3>
-            </div>
-            <div id="address">
-                <div>  
-                    <label for="street">Street</label>
-                    <input type="text" name="street" id="street">
+            <div class="sm:col-span-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <div class="mt-1">
+                    <input id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                 </div>
-                <div>
-                    <label for="city">City</label>
-                    <select name="city" id="city">
-                        <option value="dhaka">Dhaka</option>
-                        <option value="chittagong">Chittagong</option>
-                        <option value="nohakhali">Nohakhali</option>
-                        <option value="chandpur">Chandpur</option>
-                        <option value="rajshahi">Rajshahi</option>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div class="sm:col-span-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <div class="mt-1">
+                        <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                    <div class="mt-1">
+                        <input type="number" name="phone" id="phone" autocomplete="phone" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                    </div>
+                </div>
+
+                <div class="sm:col-span-6">
+                    <label for="street-address" class="block text-sm font-medium text-gray-700">Street address</label>
+                    <div class="mt-1">
+                        <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                    </div>
+                </div>
+
+                <div class="sm:col-span-2">
+                    <label for="city" class="block text-sm font-medium text-gray-700">city</label>
+                    <div class="mt-1">
+                        <select id="city" name="city" autocomplete="city" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option v-for="city in cities" :value="city">{{ city }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sm:col-span-2">
+                    <label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
+                    <div class="mt-1">
+                        <select id="city" name="city" autocomplete="city" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option v-for="state in states" :value="state">{{ state }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sm:col-span-2">
+                    <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
+                    <div class="mt-1">
+                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="sm:col-span-4">
+                <label for="manager" class="block text-sm font-medium text-gray-700">Full manager</label>
+                <div class="mt-1">
+                    <select id="city" name="city" autocomplete="city" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <option v-for="manager in managers" :value="manager">{{ manager }}</option>
                     </select>
                 </div>
-                <div>
-                    <label for="state">State</label>
-                    <select name="state" id="state">
-                        <option value="dhaka">Dhaka</option>
-                        <option value="chittagong">Chittagong</option>
-                        <option value="nohakhali">Nohakhali</option>
-                    </select>
-                </div>
-                <div>  
-                    <label for="zip">Zip</label>
-                    <input type="text" name="zip" id="zip">
-                </div>
             </div>
-            <div>  
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" id="phone">
+        </div>
+        <div class="pt-5">
+            <div class="flex justify-end">
+                <button type="submit" class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
             </div>
-            <div>  
-                <label for="email">Email</label>
-                <input type="text" email="email" id="email">
-            </div>
-            <div>
-                <label for="manager">Manager</label>
-                <select name="manager" id="manager">
-                    <option value="dhaka">Muntasir</option>
-                    <option value="chittagong">Rafi</option>
-                    <option value="nohakhali">Mehedi</option>
-                </select>
-            </div>
-        </form>
-    </body>
+        </div>
+    </form>
 </template>
 
 <script>
-
+export default {
+    data() {
+        return {
+            active: false,
+            selected: 'Dhaka',
+            cities: ['Dhaka', 'Rajshahi', 'Chittagong', 'Rangpur', 'Barishal'],
+            states: ['Dhaka', 'Rajshahi', 'Chittagong', 'Maymensingh'],
+            managers: ['Rafi', 'Shakil', 'Shourav', 'Rahee', 'Tushar', 'Hamim']
+        }
+    }
+}
 </script>

@@ -2,7 +2,6 @@
 import { useCounter } from '../store/counter'
 import Navigation from './Navigation.vue'
 
-
 const counterStore = useCounter()
 
 const incrementCount = () => counterStore.increment()

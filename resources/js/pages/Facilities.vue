@@ -4,9 +4,6 @@ import AddFacilities from "../components/addFacilities.vue";
 
 <template>
     <div>
-        <div id="title">
-            Add Facilities from here
-        </div>
         <div>
             <AddFacilities/>
         </div>
