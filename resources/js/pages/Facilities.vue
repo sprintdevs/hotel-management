@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import AddFacilities from "../components/addFacilities.vue";
+import Form from "../components/facilities/Form.vue";
 </script>
 
 <template>
     <div>
         <div>
-            <AddFacilities/>
+            <Form />
         </div>
     </div>
 </template>
