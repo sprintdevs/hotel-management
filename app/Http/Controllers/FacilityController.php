@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Facility as FacilityResource;
 use App\Models\Facility;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -64,16 +65,6 @@ class FacilityController extends Controller
      *              type="integer",
      *              example="1"
      *          ),
-     *          @OA\Property(
-     *              property="created_at",
-     *              type="string",
-     *              example="2022-11-01T18:43:40.000000Z"
-     *          ),
-     *          @OA\Property(
-     *              property="updated_at",
-     *              type="string",
-     *              example="2022-11-01T18:43:40.000000Z"
-     *          ),
      *      ),
      *     ),
      *    ),
@@ -94,7 +85,7 @@ class FacilityController extends Controller
     {
         $facilities = Facility::all();
 
-        return $facilities->toJson(JSON_PRETTY_PRINT);
+        return FacilityResource::collection(Facility::all());
     }
 
     /**
