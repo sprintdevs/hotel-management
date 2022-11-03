@@ -1,7 +1,5 @@
-<script setup lang="ts">
-import Form from '../components/facilities/Form.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <Form />
+    <RouterView />
 </template>
