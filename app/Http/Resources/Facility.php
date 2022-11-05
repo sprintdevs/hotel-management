@@ -15,15 +15,18 @@ class Facility extends JsonResource
     public function toArray($request)
     {
         return [
-            'facility_id' => $this->id,
-            'name' => $this->name,
-            'street' => $this->street,
-            'city' => $this->city,
-            'state' => $this->state,
-            'zip' => $this->zip,
-            'phone' => $this->phone,
-            'email' => $this->email,
-            'manager_id' => $this->manager_id,
+            'type' => 'facility',
+            'id' => $this->id,
+            'attributes' => [
+                'name' => $this->name,
+                'address' => $this->address,
+                'phone' => $this->phone,
+                'email' => $this->email,
+                'manager' => $this->manager->name,
+            ],
+            'links' => [
+                'self' => $this->path,
+            ]
         ];
     }
 }

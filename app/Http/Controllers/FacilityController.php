@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Facility as FacilityResource;
+use App\Http\Resources\FacilityCollection;
 use App\Models\Facility;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,66 +16,51 @@ class FacilityController extends Controller
      *  summary="Get list of facility",
      *  description="Returns list of facility",
      *  security={ {"sanctum": {} }},
-     *  @OA\Response(response=200, description="Successful operation",
+     *  @OA\Response(
+     *    response="401",
+     *    description="Unauthorized access",
      *    @OA\JsonContent(
-     *      type="array",
-     *      @OA\Items(
-     *          @OA\Property(
-     *              property="id",
-     *              type="integer",
-     *              example=1
-     *          ),
-     *          @OA\Property(
-     *              property="name",
-     *              type="string",
-     *              example="Radisson Blu"
-     *          ),
-     *          @OA\Property(
-     *              property="street",
-     *              type="string",
-     *              example="House#14, Road#03, Block - B, Banasree"
-     *          ),
-     *          @OA\Property(
-     *              property="city",
-     *              type="string",
-     *              example="Dhaka"
-     *          ),
-     *          @OA\Property(
-     *              property="state",
-     *              type="string",
-     *              example="Dhaka"
-     *          ),
-     *          @OA\Property(
-     *              property="zip",
-     *              type="integer",
-     *              example="1219"
-     *          ),
-     *          @OA\Property(
-     *              property="phone",
-     *              type="string",
-     *              example="+8801701010101"
-     *          ),
-     *          @OA\Property(
-     *              property="email",
-     *              type="string",
-     *              example="radisson@gmail.com"
-     *          ),
-     *          @OA\Property(
-     *              property="manager_id",
-     *              type="integer",
-     *              example="1"
-     *          ),
-     *      ),
-     *     ),
+     *      @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
      *    ),
-     *   @OA\Response(
-     *     response="401",
-     *     description="Unauthorized access",
-     *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
-     *    ),
-     *   ),
      *  ),
+     *   @OA\Response(
+     *     response="200",
+     *     description="Successful Operation",
+     *     @OA\JsonContent(
+     *       @OA\Property(
+     *         type="array",title="data",property="data",
+     *         @OA\Items(
+     *             @OA\Property(type="string",title="type",property="type",example="facility"),
+     *             @OA\Property(type="integer",title="id",property="id",example="1"),
+     *             @OA\Property(type="object",title="attributes",property="attributes",
+     *               @OA\Property(type="string",title="name",property="name",example="Radisson Blu"),
+     *               @OA\Property(type="string",title="address",property="address",example="House#14, Road#03, Block - B, Banasree, Dhaka, Dhaka - 1219"),
+     *               @OA\Property(type="string",title="phone",property="phone",example="+8801701010101"),
+     *               @OA\Property(type="string",title="email",property="email",example="radisson@gmail.com"),
+     *               @OA\Property(type="string",title="manager",property="manager",example="John Doe"),
+     *             ),
+     *             @OA\Property(type="object",title="links",property="links",
+     *               @OA\Property(type="string",title="self",property="self",example="/facilities/1"),
+     *             ),
+     *           ),
+     *       ),
+     *       @OA\Property(type="object",title="links",property="links",
+     *         @OA\Property(type="string",title="self",property="self",example="/facilities"),
+     *         @OA\Property(type="string",title="first",property="first",example="http://hotel.test/api/facilities?page=1"),
+     *         @OA\Property(type="string",title="last",property="last",example="http://hotel.test/api/facilities?page=10"),
+     *         @OA\Property(type="string",title="prev",property="prev",example=null),
+     *         @OA\Property(type="string",title="next",property="next",example="http://hotel.test/api/facilities?page=2"),
+     *       ),
+     *       @OA\Property(type="object",title="meta",property="meta",
+     *         @OA\Property(type="integer",title="current_page",property="current_page",example="1"),
+     *         @OA\Property(type="integer",title="from",property="from",example="1"),
+     *         @OA\Property(type="string",title="path",property="path",example="http://hotel.test/api/facilities"),
+     *         @OA\Property(type="integer",title="per_page",property="per_page",example="10"),
+     *         @OA\Property(type="integer",title="to",property="to",example="2"),
+     *       ),
+     *       
+     *     ),
+     *   ),
      * )
      *
      * Display a listing of facility.
@@ -85,7 +70,7 @@ class FacilityController extends Controller
     {
         $facilities = Facility::all();
 
-        return FacilityResource::collection(Facility::all());
+        return new FacilityCollection(Facility::simplePaginate(10));
     }
 
     /**
