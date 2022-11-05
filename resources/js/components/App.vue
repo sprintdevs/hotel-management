@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useCounter } from '../store/counter'
+import Navigation from './Navigation.vue'
 
 const counterStore = useCounter()
 
@@ -7,6 +8,7 @@ const incrementCount = () => counterStore.increment()
 </script>
 
 <template>
+    <Navigation />
     <main class="h-screen flex justify-center">
         <div class="flex flex-col space-y-4">
             <ul class="mx-auto flex space-x-4">
