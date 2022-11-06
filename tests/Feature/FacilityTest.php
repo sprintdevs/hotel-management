@@ -28,12 +28,33 @@ class FacilityTest extends TestCase
     {
         Sanctum::actingAs($this->user);
 
-        Facility::factory()->create();
+        $facility = Facility::factory()->create();
 
         $response = $this->getJson('/api/facilities');
 
-        $response->assertJsonCount(1);
         $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson([
+            'data' => [
+                [
+                    'type' => 'facility',
+                    'id' => $facility->id,
+                    'attributes' => [
+                        'name' => $facility->name,
+                        'address' => $facility->address,
+                        'phone' => $facility->phone,
+                        'email' => $facility->email,
+                        'manager' => $facility->manager->name,
+                    ],
+                    'links' => [
+                        'self' => $facility->path
+                    ]
+                ]
+            ],
+            'links' => [
+                'self' => "/facilities",
+            ],
+            'meta' => [],
+        ]);
     }
 
     /** @test **/

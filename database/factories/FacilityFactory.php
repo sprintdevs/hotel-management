@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,7 +25,7 @@ class FacilityFactory extends Factory
             'zip' => fake()->randomNumber(),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'manager_id' => 1
+            'manager_id' => User::factory(),
         ];
     }
 }
