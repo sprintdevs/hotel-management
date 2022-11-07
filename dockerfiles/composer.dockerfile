@@ -1,8 +1,11 @@
 FROM composer:2
 
-RUN delgroup dialout
+ARG USER
+ARG UID
+ARG GID
 
-RUN addgroup -g 1000 --system laravel
-RUN adduser -G laravel --system -D -s /bin/sh -u 1000 laravel
+RUN delgroup dialout
+RUN addgroup -g ${GID} --system ${USER}
+RUN adduser -G ${USER} --system -D -s /bin/sh -u ${UID} ${USER}
 
 WORKDIR /var/www/html

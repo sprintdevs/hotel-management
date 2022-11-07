@@ -13,6 +13,11 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true
   },
-  "exclude": ["vendor"],
+  "include": [
+    "resources/js/**/*.ts",
+    "resources/js/**/*.d.ts",
+    "resources/js/**/*.vue"
+  ],
+  "exclude": [ "vendor" ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

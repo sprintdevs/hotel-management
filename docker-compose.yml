@@ -3,17 +3,24 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: php.dockerfile
+            args:
+                UID: ${UID:-1000}
+                GID: ${GID:-1000}
+                USER: ${USER:-laravel}
         container_name: ${DOCKER_NAME:-app}_php
         volumes:
             - .:/var/www/html:delegated
         networks:
             - network
-        user: laravel
 
     nginx:
         build:
             context: ./dockerfiles
             dockerfile: nginx.dockerfile
+            args:
+                UID: ${UID:-1000}
+                GID: ${GID:-1000}
+                USER: ${USER:-laravel}
         container_name: ${DOCKER_NAME:-app}_nginx
         ports:
             - '${NGINX_PORT:-8080}:80'
@@ -61,25 +68,36 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: composer.dockerfile
+            args:
+                UID: ${UID:-1000}
+                GID: ${GID:-1000}
+                USER: ${USER:-laravel}
         container_name: ${DOCKER_NAME:-app}_composer
         volumes:
             - .:/var/www/html
         working_dir: /var/www/html
         depends_on:
             - php
-        user: laravel
+        user: ${USER:-laravel}
         entrypoint: ['composer', '--ignore-platform-reqs']
         networks:
             - network
 
     yarn:
-        image: node:16.18.0
+        build:
+            context: ./dockerfiles
+            dockerfile: node.dockerfile
+            args:
+                UID: ${UID:-1000}
+                GID: ${GID:-1000}
+                USER: ${USER:-laravel}
         container_name: ${DOCKER_NAME:-app}_yarn
         ports:
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         volumes:
             - .:/var/www/html
         working_dir: /var/www/html
+        user: ${USER:-laravel}
         entrypoint: ['yarn']
         networks:
             - network
@@ -88,10 +106,15 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: php.dockerfile
+            args:
+                UID: ${UID:-1000}
+                GID: ${GID:-1000}
+                USER: ${USER:-laravel}
         container_name: ${DOCKER_NAME:-app}_artisan
         volumes:
             - .:/var/www/html:delegated
         working_dir: /var/www/html
+        user: ${USER:-laravel}
         entrypoint: ['php', '/var/www/html/artisan']
         networks:
             - network
