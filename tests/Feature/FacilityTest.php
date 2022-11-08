@@ -86,6 +86,31 @@ class FacilityTest extends TestCase
         });
     }
 
+    /** @test **/
+    public function a_facility_can_be_fetched_for_editing()
+    {
+        Sanctum::actingAs($this->user);
+
+        $facility = Facility::factory()->create();
+
+        $response = $this->getJson('/api/facilities/' . $facility->id . '/edit');
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson([
+            'type' => 'facility',
+            'id' => $facility->id,
+            'attributes' => [
+                'name' => $facility->name,
+                'address' => $facility->address,
+                'phone' => $facility->phone,
+                'email' => $facility->email,
+                'manager' => $facility->manager->name,
+            ],
+            'links' => [
+                'self' => $facility->path
+            ]
+        ]);
+    }
+
     public function facilityData()
     {
         return [
