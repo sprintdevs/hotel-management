@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\Facility;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Sanctum\Sanctum;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
@@ -115,7 +114,6 @@ class FacilityTest extends TestCase
     public function a_facility_can_be_patched()
     {
         Sanctum::actingAs($this->user);
-        $this->withoutExceptionHandling();
 
         $facility = Facility::factory()->create();
 
@@ -126,6 +124,19 @@ class FacilityTest extends TestCase
         $this->assertEquals('Radisson Blu', $facility->name);
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJson(["message" => "Facility updated successfully."]);
+    }
+
+    /** @test **/
+    public function a_facility_can_be_deleted()
+    {
+        Sanctum::actingAs($this->user);
+        
+        $facility = Facility::factory()->create();
+
+        $response = $this->delete('/api/facilities/' .$facility->id);
+
+        $this->assertCount(0, Facility::all());
+        $response->assertStatus(Response::HTTP_NO_CONTENT);
     }
 
     public function facilityData()
