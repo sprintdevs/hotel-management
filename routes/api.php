@@ -16,4 +16,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/facilities', [FacilityController::class, 'store']);
     Route::get('/facilities', [FacilityController::class, 'index']);
     Route::get('/facilities/{facility}/edit', [FacilityController::class, 'edit']);
+    Route::patch('/facilities/{facility}', [FacilityController::class, 'update']);
 });

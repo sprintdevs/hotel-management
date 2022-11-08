@@ -87,7 +87,7 @@ class FacilityTest extends TestCase
     }
 
     /** @test **/
-    public function a_facility_can_be_fetched_for_editing()
+    public function a_facility_can_be_fetched_for_patching()
     {
         Sanctum::actingAs($this->user);
 
@@ -109,6 +109,23 @@ class FacilityTest extends TestCase
                 'self' => $facility->path
             ]
         ]);
+    }
+
+    /** @test **/
+    public function a_facility_can_be_patched()
+    {
+        Sanctum::actingAs($this->user);
+        $this->withoutExceptionHandling();
+
+        $facility = Facility::factory()->create();
+
+        $response = $this->patchJson('/api/facilities/' .$facility->id, $this->facilityData());
+
+        $facility = $facility->fresh();
+
+        $this->assertEquals('Radisson Blu', $facility->name);
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson(["message" => "Facility updated successfully."]);
     }
 
     public function facilityData()

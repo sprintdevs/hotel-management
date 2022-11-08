@@ -133,7 +133,7 @@ class FacilityController extends Controller
      *  description="Returns a facility",
      *  security={ {"sanctum": {} }},
      * @OA\Parameter(
-     *     name="facilityId",
+     *     name="facility",
      *     example=1,
      *     required=true,
      *     in="path",
@@ -179,9 +179,64 @@ class FacilityController extends Controller
             ->setStatusCode(Response::HTTP_OK);
     }
 
+    /**
+     * @OA\Patch(
+     *  operationId="updateFacility",
+     *  summary="Update a Facility",
+     *  description="Update a Facility",
+     *  tags={"facilities"},
+     *  path="/api/facilities/{facility}",
+     *  security={ {"sanctum": {} }},
+     * @OA\Parameter(
+     *     name="facility",
+     *     example=1,
+     *     required=true,
+     *     in="path",
+     *     description="Enter a facility ID",
+     *     @OA\Schema(
+     *       type="integer"
+     *     )
+     * ),
+     *  @OA\RequestBody(
+     *    description="Update facility",
+     *    required=true,
+     *    @OA\JsonContent(
+     *      @OA\Property(type="string",title="name",property="name",example="Radisson YOLO"),
+     *      @OA\Property(type="string",title="street",property="street",example="House#14, Road#03, Block - B, Banasree"),
+     *      @OA\Property(type="string",title="city",property="city",example="Dhaka"),
+     *      @OA\Property(type="string",title="state",property="state",example="Dhaka"),
+     *      @OA\Property(type="integer",title="zip",property="zip",example="1219"),
+     *      @OA\Property(type="string",title="phone",property="phone",example="+8801701010101"),
+     *      @OA\Property(type="string",title="email",property="email",example="radisson@gmail.com"),
+     *      @OA\Property(type="integer",title="manager_id",property="manager_id",example="1"),
+     *    )
+     *  ),
+     *   @OA\Response(
+     *     response="200",
+     *     description="Facility updated",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="Facility updated successfully.")
+     *    ),
+     *   ),
+     *  @OA\Response(response=422,description="Validation exception"),
+     *   @OA\Response(
+     *     response="401",
+     *     description="Unauthorized access",
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
+     *    ),
+     *   ),
+     * )
+     *
+     * @param FacilityRequest $request
+     * @return JsonResponse
+     */
     public function update(Facility $facility)
     {
         $facility->update($this->validatedData());
+
+        return response()->json(["message" => "Facility updated successfully."])
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     public function validatedData()
