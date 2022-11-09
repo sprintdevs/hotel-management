@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="sm:col-span-2">
-                    <DropDown label="City" :options="cityOptions" v-model="selectedCity" />
+                    <DropDown label="City" :options="cityOptions" />
                 </div>
 
                 <div class="sm:col-span-2"><DropDown label="State" :options="stateOptions" /></div>
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="sm:col-span-6">
-                    <DropDown label="Manager" :options="managerOptions" v-model="selectedManager" />
+                    <DropDown label="Manager" :options="managerOptions" />
                 </div>
             </div>
         </div>
