@@ -1,8 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <img class="object-scale-down h-14" src="sprintdevs.png" alt="Sprint Devs" />
+    <div class="flex h-screen min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
+        <RouterLink to="/">
+            <img class="mx-auto h-12 w-auto" src="../../../../public/sprintdevs.png" alt="Sprint Devs" />
+        </RouterLink>
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
             <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-800">Sign Up</h2>
         </div>
@@ -13,33 +15,51 @@
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                         <div class="mt-1">
-                            <input id="name" name="name" type="name" autocomplete="name" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm" />
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                placeholder="Your Name"
+                                autocomplete="name"
+                                required
+                                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                            />
                         </div>
                     </div>
+
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                         <div class="mt-1">
-                            <input id="email" name="email" type="email" autocomplete="email" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm" />
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="your@email.com"
+                                autocomplete="email"
+                                required
+                                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                            />
                         </div>
                     </div>
 
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                         <div class="mt-1">
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                autocomplete="current-password"
-                                required
-                                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
-                            />
+                            <input id="password" name="password" type="password" placeholder="••••••••" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm" />
                         </div>
                     </div>
+
                     <div>
                         <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
                         <div class="mt-1">
-                            <input id="confirm-password" name="confirm-password" type="password" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm" />
+                            <input
+                                id="confirm-password"
+                                name="confirm-password"
+                                type="password"
+                                placeholder="••••••••"
+                                required
+                                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+                            />
                         </div>
                     </div>
 

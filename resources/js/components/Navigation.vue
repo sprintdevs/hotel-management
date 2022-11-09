@@ -2,7 +2,7 @@
     <nav class="hidden lg:h-screen lg:flex lg:w-64 lg:flex-col">
         <div class="flex flex-grow flex-col overflow-y-auto bg-cyan-700 pt-5 pb-4">
             <RouterLink to="/" class="flex flex-shrink-0 items-center px-4">
-                <img class="h-14 w-auto" src="sprintdevs.png" alt="Sprint Devs" />
+                <img class="h-14 w-auto" src="../../../public/sprintdevs.png" alt="Sprint Devs" />
             </RouterLink>
             <nav class="mt-10 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
                 <div class="space-y-1 px-2">
