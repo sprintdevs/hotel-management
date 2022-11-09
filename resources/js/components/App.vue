@@ -14,8 +14,6 @@ const incrementCount = () => counterStore.increment()
             <ul class="mx-auto flex space-x-4">
                 <li><RouterLink to="/">Home</RouterLink></li>
                 <li><RouterLink to="/about">About</RouterLink></li>
-                <li><RouterLink to="/signup">Registrations</RouterLink></li>
-                <li><RouterLink to="/login">Login</RouterLink></li>
             </ul>
             <hr />
             <div class="mt-8">
