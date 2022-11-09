@@ -1,5 +1,5 @@
 <template>
-    <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+    <nav class="hidden lg:h-screen lg:flex lg:w-64 lg:flex-col">
         <div class="flex flex-grow flex-col overflow-y-auto bg-cyan-700 pt-5 pb-4">
             <RouterLink to="/" class="flex flex-shrink-0 items-center px-4">
                 <img class="h-14 w-auto" src="sprintdevs.png" alt="Sprint Devs" />
@@ -13,43 +13,57 @@
                 </div>
             </nav>
         </div>
-    </div>
+    </nav>
 </template>
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 
-import CreditCard from '../svgs/CreditCard.vue'
-import RectangleStack from '../svgs/RectangleStack.vue'
-import Swatch from '../svgs/Swatch.vue'
-import UserGroup from '../svgs/UserGroup.vue'
+import HomeModernIcon from '../svgs/HomeModernIcon.vue'
+import SwatchIcon from '../svgs/SwatchIcon.vue'
+import SquareStackIcon from '../svgs/SquareStackIcon.vue'
+import RectangleStackIcon from '../svgs/RectangleStackIcon.vue'
+import UserGroupIcon from '../svgs/UserGroupIcon.vue'
+import CreditCardIcon from '../svgs/CreditCardIcon.vue'
 
 const currentRoute = useRoute()
 
 const linkClasses = (routePath: string) => {
-    return [routePath === currentRoute.path ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']
+    const baseUrl = currentRoute.path.split('/')[1]
+
+    return [routePath.slice(1) === baseUrl ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']
 }
 
 const navLinks = [
     {
+        to: '/dashboard',
+        label: 'Dashboard',
+        icon: HomeModernIcon
+    },
+    {
         to: '/facilities',
         label: 'Facilities',
-        icon: Swatch
+        icon: SwatchIcon
+    },
+    {
+        to: '/floors',
+        label: 'Floors',
+        icon: SquareStackIcon
     },
     {
         to: '/rooms',
         label: 'Rooms',
-        icon: RectangleStack
+        icon: RectangleStackIcon
     },
     {
         to: '/guests',
         label: 'Guests',
-        icon: UserGroup
+        icon: UserGroupIcon
     },
     {
         to: '/payment',
         label: 'Payments',
-        icon: CreditCard
+        icon: CreditCardIcon
     }
 ]
 </script>
