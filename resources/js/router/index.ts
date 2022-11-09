@@ -11,7 +11,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/about', component: About },
     { path: '/login', component: Login}
     { path: '/register', component: Register },
-    { path: '/facilities', component: Facilities, children: [{ path: '/facilities/create', component: Form }] }
+    { path: '/facilities', component: Facilities, children: [{ path: 'create', component: Form }] }
 ]
 
 const router = createRouter({
