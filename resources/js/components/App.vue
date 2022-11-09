@@ -1,11 +1,4 @@
-<script setup lang="ts">
-import { useCounter } from '../store/counter'
-import Navigation from './Navigation.vue'
-
-const counterStore = useCounter()
-
-const incrementCount = () => counterStore.increment()
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <Navigation />
@@ -14,6 +7,7 @@ const incrementCount = () => counterStore.increment()
             <ul class="mx-auto flex space-x-4">
                 <li><RouterLink to="/">Home</RouterLink></li>
                 <li><RouterLink to="/about">About</RouterLink></li>
+                <li><RouterLink to="/facilities">Facilities</RouterLink></li>
             </ul>
             <hr />
             <div class="mt-8">
