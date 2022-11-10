@@ -35,16 +35,16 @@ class Facility extends Model
     }
 
     protected function address(): Attribute
-{
-    return Attribute::make(
-        get: fn ($value, $attributes) => $attributes['street'] . ', ' . $attributes['city'] . ', ' . $attributes['state'] . ' - ' . $attributes['zip']
-    );
-}
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => $attributes['street'] . ', ' . $attributes['city'] . ', ' . $attributes['state'] . ' - ' . $attributes['zip']
+        );
+    }
 
-protected function path(): Attribute
-{
-    return Attribute::make(
-        get: fn ($value, $attributes) => '/facilities/' . $attributes['id']
-    );
-}
+    protected function path(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => '/facilities/' . $attributes['id']
+        );
+    }
 }
