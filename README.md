@@ -22,14 +22,14 @@
 -   `dcr artisan migrate`
 -   `dcr artisan db:seed`
 -   `dcr artisan l5:generate`
--   `dcr yarn`
--   `dcr yarn dev`
+-   `dcr npm install`
+-   `dcr npm run dev`
 -   `http://localhost:<NGINX_PORT>` visit from browser
     <br><br>
 
 ## Helper Commands
 
-### To easily use artisan/composer/yarn commands, add this alias in .bashrc or .zshrc
+### To easily use artisan/composer/npm commands, add this alias in .bashrc or .zshrc
 
 `alias dcr="docker-compose run --rm --service-ports"`
 
@@ -41,9 +41,9 @@
 
 `dcr composer <command_here>`
 
-### To run yarn inside docker
+### To run npm inside docker
 
-`dcr yarn <command_here>`
+`dcr npm <command_here>`
 
 ### To shut down the project using docker
 
