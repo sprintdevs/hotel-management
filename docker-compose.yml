@@ -48,7 +48,6 @@ services:
         container_name: ${DOCKER_NAME:-app}_mysql
         volumes:
             - mysql_data:/var/lib/mysql
-        restart: unless-stopped
         tty: true
         ports:
             - ${DB_PORT:-3306}:3306
@@ -83,22 +82,22 @@ services:
         networks:
             - network
 
-    yarn:
+    npm:
         build:
             context: ./dockerfiles
-            dockerfile: node.dockerfile
+            dockerfile: npm.dockerfile
             args:
                 UID: ${UID:-1000}
                 GID: ${GID:-1000}
                 USER: ${USER:-laravel}
-        container_name: ${DOCKER_NAME:-app}_yarn
+        container_name: ${DOCKER_NAME:-app}_npm
         ports:
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         volumes:
             - .:/var/www/html
         working_dir: /var/www/html
         user: ${USER:-laravel}
-        entrypoint: ['yarn']
+        entrypoint: ['npm']
         networks:
             - network
 

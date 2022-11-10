@@ -4,6 +4,8 @@ ARG USER
 ARG UID
 ARG GID
 
+ENV NPM_CONFIG_UPDATE_NOTIFIER false
+
 RUN delgroup dialout
 RUN deluser --remove-home node
 RUN addgroup -g ${GID} --system ${USER}
