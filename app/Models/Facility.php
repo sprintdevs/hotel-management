@@ -44,7 +44,7 @@ class Facility extends Model
     protected function path(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attributes) => '/facilities/' . $attributes['id']
+            get: fn ($value, $attributes) => '/api/facilities/' . $attributes['id']
         );
     }
 }

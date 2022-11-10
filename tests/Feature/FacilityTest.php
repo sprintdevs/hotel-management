@@ -50,7 +50,7 @@ class FacilityTest extends TestCase
                 ]
             ],
             'links' => [
-                'self' => "/facilities",
+                'self' => "/api/facilities",
             ],
             'meta' => [],
         ]);
@@ -95,18 +95,15 @@ class FacilityTest extends TestCase
         $response = $this->getJson('/api/facilities/' . $facility->id . '/edit');
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJson([
-            'type' => 'facility',
             'id' => $facility->id,
-            'attributes' => [
-                'name' => $facility->name,
-                'address' => $facility->address,
-                'phone' => $facility->phone,
-                'email' => $facility->email,
-                'manager' => $facility->manager->name,
-            ],
-            'links' => [
-                'self' => $facility->path
-            ]
+            'name' => $facility->name,
+            'street' => $facility->street,
+            'city' => $facility->city,
+            'state' => $facility->state,
+            'zip' => $facility->zip,
+            'phone' => $facility->phone,
+            'email' => $facility->email,
+            'manager_id' => $facility->manager_id
         ]);
     }
 
@@ -117,7 +114,7 @@ class FacilityTest extends TestCase
 
         $facility = Facility::factory()->create();
 
-        $response = $this->patchJson('/api/facilities/' .$facility->id, $this->facilityData());
+        $response = $this->patchJson('/api/facilities/' . $facility->id, $this->facilityData());
 
         $facility = $facility->fresh();
 
@@ -130,10 +127,10 @@ class FacilityTest extends TestCase
     public function a_facility_can_be_deleted()
     {
         Sanctum::actingAs($this->user);
-        
+
         $facility = Facility::factory()->create();
 
-        $response = $this->delete('/api/facilities/' .$facility->id);
+        $response = $this->delete('/api/facilities/' . $facility->id);
 
         $this->assertCount(0, Facility::all());
         $response->assertStatus(Response::HTTP_NO_CONTENT);
