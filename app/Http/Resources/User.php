@@ -20,7 +20,7 @@ class User extends JsonResource
             'attributes' => [
                 'name' => $this->name,
                 'email' => $this->email,
-                'verified' => true,
+                'verified' => $this->verified,
             ],
             'links' => [
                 'self' => $this->path
