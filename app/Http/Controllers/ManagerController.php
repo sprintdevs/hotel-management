@@ -16,6 +16,15 @@ class ManagerController extends Controller
      *  summary="Get list of managers",
      *  description="Returns a list of managers",
      *  security={ {"sanctum": {} }},
+     *  @OA\Parameter(
+     *      name="page",
+     *      required=false,
+     *      in="query",
+     *      description="Enter page number",
+     *      @OA\Schema(
+     *        type="integer"
+     *      )
+     *  ),
      *  @OA\Response(
      *    response="401",
      *    description="Unauthorized access",
