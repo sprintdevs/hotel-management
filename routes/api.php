@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\TokenAuthenticationController;
-use App\Http\Controllers\FacilityController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\Auth\TokenAuthenticationController;
 
 Route::post('/tokens/create', [TokenAuthenticationController::class, 'store']);
 
@@ -18,4 +19,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/facilities/{facility}/edit', [FacilityController::class, 'edit']);
     Route::patch('/facilities/{facility}', [FacilityController::class, 'update']);
     Route::delete('/facilities/{facility}', [FacilityController::class, 'destroy']);
+
+    Route::get('/managers', [ManagerController::class, 'index']);
 });

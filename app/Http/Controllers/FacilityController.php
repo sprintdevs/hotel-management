@@ -14,8 +14,8 @@ class FacilityController extends Controller
      *  path="/api/facilities",
      *  operationId="indexFacility",
      *  tags={"facilities"},
-     *  summary="Get list of facility",
-     *  description="Returns list of facility",
+     *  summary="Get list of facilities",
+     *  description="Returns a list of facilities",
      *  security={ {"sanctum": {} }},
      *  @OA\Response(
      *    response="401",
@@ -26,7 +26,7 @@ class FacilityController extends Controller
      *  ),
      *   @OA\Response(
      *     response="200",
-     *     description="Successful Operation",
+     *     description="Successful operation",
      *     @OA\JsonContent(
      *       @OA\Property(
      *         type="array",title="data",property="data",
@@ -69,8 +69,6 @@ class FacilityController extends Controller
      */
     public function index()
     {
-        $facilities = Facility::all();
-
         return new FacilityCollection(Facility::simplePaginate(10));
     }
 
