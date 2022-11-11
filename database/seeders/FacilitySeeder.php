@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Facility;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class FacilitySeeder extends Seeder
@@ -15,6 +17,12 @@ class FacilitySeeder extends Seeder
      */
     public function run()
     {
-        Facility::factory(15)->create();
+        $managers = User::factory(5)->create();
+
+        Facility::factory(15)
+            ->state(new Sequence(
+                fn ($sequence) => ['manager_id' => $managers->random()],
+            ))
+            ->create();
     }
 }
