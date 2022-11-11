@@ -17,6 +17,15 @@ class FacilityController extends Controller
      *  summary="Get list of facilities",
      *  description="Returns a list of facilities",
      *  security={ {"sanctum": {} }},
+     *  @OA\Parameter(
+     *      name="page",
+     *      required=false,
+     *      in="query",
+     *      description="Enter page number",
+     *      @OA\Schema(
+     *        type="integer"
+     *      )
+     *  ),
      *  @OA\Response(
      *    response="401",
      *    description="Unauthorized access",
@@ -135,7 +144,7 @@ class FacilityController extends Controller
      *     example=1,
      *     required=true,
      *     in="path",
-     *     description="Enter a facility ID",
+     *     description="Enter facility ID",
      *     @OA\Schema(
      *       type="integer"
      *     )
@@ -179,8 +188,8 @@ class FacilityController extends Controller
     /**
      * @OA\Patch(
      *  operationId="updateFacility",
-     *  summary="Update a Facility",
-     *  description="Update a Facility",
+     *  summary="Update a facility",
+     *  description="Updates a facility",
      *  tags={"facilities"},
      *  path="/api/facilities/{facility_id}",
      *  security={ {"sanctum": {} }},
@@ -189,7 +198,7 @@ class FacilityController extends Controller
      *     example=1,
      *     required=true,
      *     in="path",
-     *     description="Enter a facility ID",
+     *     description="Enter facility ID",
      *     @OA\Schema(
      *       type="integer"
      *     )
@@ -240,8 +249,8 @@ class FacilityController extends Controller
     /**
      * @OA\Delete(
      *  operationId="destroyFacility",
-     *  summary="Delete a Facility",
-     *  description="Delete a Facility",
+     *  summary="Delete a facility",
+     *  description="Deletes a facility",
      *  tags={"facilities"},
      *  path="/api/facilities/{facility_id}",
      *  security={ {"sanctum": {} }},
@@ -250,7 +259,7 @@ class FacilityController extends Controller
      *      example=1,
      *      required=true,
      *      in="path",
-     *      description="Enter a facility ID",
+     *      description="Enter facility ID",
      *      @OA\Schema(
      *        type="integer"
      *      )
