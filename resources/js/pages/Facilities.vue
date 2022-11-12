@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import GridList from '../components/facilities/GridList.vue'
+</script>
 
 <template>
     <div class="flex flex-row justify-between bg-gray-100 p-6 items-center">
@@ -12,4 +14,5 @@
             </RouterLink>
         </div>
     </div>
+    <GridList />
 </template>
