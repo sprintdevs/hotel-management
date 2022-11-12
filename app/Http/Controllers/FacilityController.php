@@ -133,6 +133,61 @@ class FacilityController extends Controller
 
     /**
      * @OA\Get(
+     *  path="/api/facilities/{facility_id}",
+     *  operationId="showFacility",
+     *  tags={"facilities"},
+     *  summary="Get a facility",
+     *  description="Returns a facility",
+     *  security={ {"sanctum": {} }},
+     * @OA\Parameter(
+     *     name="facility_id",
+     *     example=1,
+     *     required=true,
+     *     in="path",
+     *     description="Enter facility ID",
+     *     @OA\Schema(
+     *       type="integer"
+     *     )
+     * ),
+     * @OA\Response(
+     *   response="401",
+     *   description="Unauthorized access",
+     *   @OA\JsonContent(
+     *     @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
+     *   ),
+     * ),
+     * @OA\Response(response=404,description="Facility not found"),
+     *  @OA\Response(
+     *    response="200",
+     *    description="Successful Operation",
+     *    @OA\JsonContent(
+     *      @OA\Property(type="string",title="type",property="type",example="facility"),
+     *      @OA\Property(type="integer",title="id",property="id",example="1"),
+     *      @OA\Property(type="object",title="attributes",property="attributes",
+     *        @OA\Property(type="string",title="name",property="name",example="Radisson Blu"),
+     *        @OA\Property(type="string",title="address",property="address",example="House#14, Road#03, Block - B, Banasree, Dhaka, Dhaka - 1219"),
+     *        @OA\Property(type="string",title="phone",property="phone",example="+8801701010101"),
+     *        @OA\Property(type="string",title="email",property="email",example="radisson@gmail.com"),
+     *        @OA\Property(type="string",title="manager",property="manager",example="John Doe"),
+     *      ),
+     *      @OA\Property(type="object",title="links",property="links",
+     *        @OA\Property(type="string",title="self",property="self",example="/facilities/1"),
+     *      ),
+     *    )
+     *  ),
+     * )
+     *
+     * Display a listing of facility.
+     * @return JsonResponse
+     */
+    public function show(Facility $facility)
+    {
+        return response()->json(new ResourcesFacility($facility))
+            ->setStatusCode(Response::HTTP_OK);
+    }
+
+    /**
+     * @OA\Get(
      *  path="/api/facilities/{facility_id}/edit",
      *  operationId="editFacility",
      *  tags={"facilities"},
