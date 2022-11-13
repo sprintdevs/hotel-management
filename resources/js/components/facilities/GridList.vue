@@ -21,7 +21,7 @@ const facilityData = [
         manager_id: 1
     },
     {
-        facility_id: 1,
+        facility_id: 3,
         facility_name: 'Sheraton',
         address: 'Street, City, State - ZIP',
         phone: '+880183223344',
