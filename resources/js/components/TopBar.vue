@@ -44,11 +44,11 @@
             </div>
             <hr class="my-5 h-px ml-2 mr-2" />
             <div class="flex">
-                <img src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="mt-4 ml-2 w-20 rounded-full flex-none" alt="" />
+                <img src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="mt-0 ml-2 w-24 rounded-full flex-none" alt="" />
 
                 <div class="flex-grow-1 ml-5 mt-3">
-                    <h3 class="font-semibold text-4xl">Good Morning, John Doe <br /></h3>
-                    <div class="flex flex-row mt-4">
+                    <h3 class="font-sans text-3xl">Good Morning, John Doe <br /></h3>
+                    <div class="flex flex-row mt-3">
                         <svg class="w-6 h-6" fill="none" stroke="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
