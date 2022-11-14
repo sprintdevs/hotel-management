@@ -17,6 +17,6 @@ class Room extends Model
 
     public function floor()
     {
-        return $this->belongsTo(Floor::class, 'floor_id');
+        return $this->belongsTo(Floor::class);
     }
 }

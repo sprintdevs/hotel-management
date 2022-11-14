@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('floor_id');
             $table->string('name');
             $table->enum('type', ['STANDARD', 'DUPLEX', 'DELUX']);
             $table->float('price');
@@ -24,7 +25,6 @@ return new class extends Migration
             $table->boolean('balcony');
             $table->json('services');
             $table->json('complimentaries');
-            $table->unsignedBigInteger('floor_id');
             $table->timestamps();
         });
     }
