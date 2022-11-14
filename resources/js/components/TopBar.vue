@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full overflow-hidden h-auto border-b-2 shadow-sm border-b-gray-200">
+    <header class="pl-6 pr-6 w-full overflow-hidden h-auto border-b-2 shadow-sm border-b-gray-200">
         <div class="overflow-y-auto bg-white pt-5 pb-4">
             <div class="mb-6 flex flex-1 flex-col" aria-label="TopBar">
                 <div class="flex items-center">
@@ -20,7 +20,7 @@
                     <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 inline-flex items-center px-4 text-sm text-center text-gray-900 hover:rounded-full" type="button">
                         <img src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="mr-2 w-8 rounded-full" alt="" />
                         John Doe
-                        <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="gray" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                     </button>
@@ -53,7 +53,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                         <p class="font-medium ml-1 text-gray-600">Wall Street</p>
-                        <svg class="w-6 h-6 ml-5" fill="green" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-6 h-6 ml-5 opacity-50" fill="green" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
 
