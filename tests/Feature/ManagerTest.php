@@ -23,10 +23,8 @@ class ManagerTest extends TestCase
     }
 
     /** @test **/
-    public function a_list_of_managers_should_be_fetched()
+    public function a_list_of_managers_can_be_fetched()
     {
-        $this->withoutExceptionHandling();
-
         Sanctum::actingAs($this->user);
 
         $manager = User::factory()->create();
@@ -63,7 +61,7 @@ class ManagerTest extends TestCase
                 ]
             ],
             'links' => [
-                'self' => "/api/managers",
+                'self' => '/users',
             ],
             'meta' => [],
         ]);

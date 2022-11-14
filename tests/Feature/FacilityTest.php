@@ -50,7 +50,7 @@ class FacilityTest extends TestCase
                 ]
             ],
             'links' => [
-                'self' => "/api/facilities",
+                'self' => '/facilities',
             ],
             'meta' => [],
         ]);
@@ -64,9 +64,9 @@ class FacilityTest extends TestCase
         $response = $this->postJson('/api/facilities', $this->facilityData());
 
         $response->assertStatus(Response::HTTP_CREATED);
-        $response->assertJson(["message" => "Facility created successfully."]);
+        $response->assertJson(['message' => 'Facility created successfully.']);
         $this->assertCount(1, Facility::all());
-        $this->assertEquals("Radisson Blu", Facility::first()->name);
+        $this->assertEquals('Radisson Blu', Facility::first()->name);
     }
 
     /** @test **/
@@ -95,17 +95,19 @@ class FacilityTest extends TestCase
         $response = $this->getJson('/api/facilities/' . $facility->id);
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJson([
-            'type' => 'facility',
-            'id' => $facility->id,
-            'attributes' => [
-                'name' => $facility->name,
-                'address' => $facility->address,
-                'phone' => $facility->phone,
-                'email' => $facility->email,
-                'manager' => $facility->manager->name,
-            ],
-            'links' => [
-                'self' => $facility->path
+            'data' => [
+                'type' => 'facility',
+                'id' => $facility->id,
+                'attributes' => [
+                    'name' => $facility->name,
+                    'address' => $facility->address,
+                    'phone' => $facility->phone,
+                    'email' => $facility->email,
+                    'manager' => $facility->manager->name,
+                ],
+                'links' => [
+                    'self' => $facility->path
+                ]
             ]
         ]);
     }
@@ -145,7 +147,7 @@ class FacilityTest extends TestCase
 
         $this->assertEquals('Radisson Blu', $facility->name);
         $response->assertStatus(Response::HTTP_OK);
-        $response->assertJson(["message" => "Facility updated successfully."]);
+        $response->assertJson(['message' => 'Facility updated successfully.']);
     }
 
     /** @test **/
@@ -164,14 +166,14 @@ class FacilityTest extends TestCase
     public function facilityData()
     {
         return [
-            "name" => "Radisson Blu",
-            "street" => "House#14, Road#03, Block - B, Banasree",
-            "city" => "Dhaka",
-            "state" => "Dhaka",
-            "zip" => "1219",
-            "phone" => "+8801701010101",
-            "email" => "john@gmail.com",
-            "manager_id" => 1
+            'name' => 'Radisson Blu',
+            'street' => 'House#14, Road#03, Block - B, Banasree',
+            'city' => 'Dhaka',
+            'state' => 'Dhaka',
+            'zip' => '1219',
+            'phone' => '+8801701010101',
+            'email' => 'radisson@email.com',
+            'manager_id' => 1
         ];
     }
 }

@@ -14,12 +14,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  *   description="User model",
  *   title="User",
  *   required={},
- *   @OA\Property(type="integer",title="id",property="id",example="1"),
- *   @OA\Property(type="string",title="name",property="name",example="John Doe"),
- *   @OA\Property(type="string",title="email",property="email",example="john@email.com"),
- *   @OA\Property(type="timestamp",title="email_verified_at",property="email_verified_at",example="2022-07-04T02:41:42.336Z"),
- *   @OA\Property(type="timestamp",title="created_at",property="created_at",example="2022-07-04T02:41:42.336Z"),
- *   @OA\Property(type="timestamp",title="updated_at",property="updated_at",example="2022-07-04T02:41:42.336Z"),
+ *   @OA\Property(type="integer", title="id", property="id", example="1"),
+ *   @OA\Property(type="string", title="name", property="name", example="John Doe"),
+ *   @OA\Property(type="string", title="email", property="email", example="john@email.com"),
+ *   @OA\Property(type="timestamp", title="email_verified_at", property="email_verified_at", example="2022-07-04T02:41:42.336Z"),
+ *   @OA\Property(type="timestamp", title="created_at", property="created_at", example="2022-07-04T02:41:42.336Z"),
+ *   @OA\Property(type="timestamp", title="updated_at", property="updated_at", example="2022-07-04T02:41:42.336Z")
  * )
  */
 class User extends Authenticatable
@@ -66,7 +66,7 @@ class User extends Authenticatable
     protected function path(): Attribute
     {
         return Attribute::make(
-            get: fn ($value, $attributes) => '/api/managers/' . $attributes['id']
+            get: fn ($value, $attributes) => '/users/' . $attributes['id']
         );
     }
 

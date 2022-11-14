@@ -17,7 +17,7 @@ class FacilityCollection extends ResourceCollection
         return [
             'data' => $this->collection,
             'links' => [
-                'self' => '/api/facilities'
+                'self' => '/facilities'
             ]
         ];
     }

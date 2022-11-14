@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('manager_id');
             $table->string('name');
             $table->string('street');
             $table->string('city');
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->bigInteger('zip');
             $table->string('phone');
             $table->string('email');
-            $table->unsignedBigInteger('manager_id');
             $table->timestamps();
         });
     }
