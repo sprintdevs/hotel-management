@@ -10,9 +10,9 @@ class FloorController extends Controller
     public function validatedData()
     {
         return request()->validate([
-            "name" => 'required',
-            "active" => 'required',
-            "facility_id" => 'required',
+            'name' => 'required',
+            'active' => 'required',
+            'facility_id' => 'required',
         ]);
     }
 }

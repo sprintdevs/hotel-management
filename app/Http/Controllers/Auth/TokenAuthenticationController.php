@@ -12,43 +12,43 @@ class TokenAuthenticationController extends Controller
 {
     /**
      * @OA\Post(
-     *  operationId="createToken",
-     *  summary="Create new token",
-     *  description="Issue new API token to user",
-     *  tags={"authenticate"},
-     *  path="/api/tokens/create",
-     *  @OA\RequestBody(
-     *    description="User credentials",
-     *    required=true,
-     *    @OA\JsonContent(
-     *      @OA\Property(type="string",title="email",property="email",example="john@email.com"),
-     *      @OA\Property(type="string",title="password",property="password",example="password"),
-     *      @OA\Property(type="string",title="device_name",property="device_name",example="iPhone 14 Pro"),
-     *    )
-     *  ),
+     *   operationId="createToken",
+     *   summary="Create new token",
+     *   description="Issue new API token to user",
+     *   tags={"authenticate"},
+     *   path="/api/tokens/create",
+     *   @OA\RequestBody(
+     *     description="User credentials",
+     *     required=true,
+     *     @OA\JsonContent(
+     *       @OA\Property(type="string",title="email",property="email",example="john@email.com"),
+     *       @OA\Property(type="string",title="password",property="password",example="password"),
+     *       @OA\Property(type="string",title="device_name",property="device_name",example="iPhone 14 Pro")
+     *     )
+     *   ),
      *   @OA\Response(
      *     response="200",
      *     description="Successful operation",
      *     @OA\JsonContent(
      *       @OA\Property(type="string",title="message",property="message",example="Authentication token created."),
-     *       @OA\Property(type="string",title="api_token",property="api_token",example="<TOKEN>"),
-     *    ),
+     *       @OA\Property(type="string",title="api_token",property="api_token",example="<TOKEN>")
+     *     )
      *   ),
      *   @OA\Response(
      *     response="422",
-     *     description="Unprocessable Content",
+     *     description="Unprocessable content",
      *     @OA\JsonContent(
      *       @OA\Property(type="string",title="message",property="message",example="The provided credentials are incorrect."),
      *       @OA\Property(
-     *         type="object",title="errors",property="errors", 
+     *         type="object",
+     *         title="errors",
+     *         property="errors", 
      *         @OA\Property(property="email", type="array",
-     *           @OA\Items(
-     *             example="The provided credentials are incorrect."
-     *           ),
-     *         ),
-     *       ),
-     *     ),
-     *   ),
+     *           @OA\Items(example="The provided credentials are incorrect.")
+     *         )
+     *       )
+     *     )
+     *   )
      * )
      */
     public function store(Request $request)
@@ -61,7 +61,7 @@ class TokenAuthenticationController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -77,26 +77,26 @@ class TokenAuthenticationController extends Controller
 
     /**
      * @OA\Post(
-     *  operationId="revokeToken",
-     *  summary="Revoke current token",
-     *  description="Revoke authenticated user's current token",
-     *  tags={"authenticate"},
-     *  security={ {"sanctum": {} }},
-     *  path="/api/tokens/revoke",
+     *   operationId="revokeToken",
+     *   summary="Revoke current token",
+     *   description="Revoke authenticated user's current token",
+     *   tags={"authenticate"},
+     *   security={{ "sanctum": {} }},
+     *   path="/api/tokens/revoke",
      *   @OA\Response(
      *     response="200",
      *     description="Successful operation",
      *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="message",property="message",example="Authentication token revoked for current session."),
-     *    ),
+     *       @OA\Property(type="string",title="message",property="message",example="Authentication token revoked for current session.")
+     *     )
      *   ),
      *   @OA\Response(
      *     response="401",
      *     description="Unauthorized access",
      *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
-     *    ),
-     *   ),
+     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated.")
+     *     )
+     *   )
      * )
      */
     public function destroy(Request $request)
@@ -108,26 +108,26 @@ class TokenAuthenticationController extends Controller
 
     /**
      * @OA\Post(
-     *  operationId="revokeAllTokens",
-     *  summary="Revoke all tokens",
-     *  description="Revoke authenticated user's all tokens",
-     *  tags={"authenticate"},
-     *  security={ {"sanctum": {} }},
-     *  path="/api/tokens/revoke-all",
+     *   operationId="revokeAllTokens",
+     *   summary="Revoke all tokens",
+     *   description="Revoke authenticated user's all tokens",
+     *   tags={"authenticate"},
+     *   security={{ "sanctum": {} }},
+     *   path="/api/tokens/revoke-all",
      *   @OA\Response(
      *     response="200",
      *     description="Successful operation",
      *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="message",property="message",example="All authentication tokens revoked."),
-     *    ),
+     *       @OA\Property(type="string",title="message",property="message",example="All authentication tokens revoked.")
+     *     )
      *   ),
      *   @OA\Response(
      *     response="401",
      *     description="Unauthorized access",
      *     @OA\JsonContent(
-     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated."),
-     *    ),
-     *   ),
+     *       @OA\Property(type="string",title="message",property="message",example="Unauthenticated.")
+     *     )
+     *   )
      * )
      */
     public function destroyAll(Request $request)

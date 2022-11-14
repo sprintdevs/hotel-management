@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('floors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('facility_id');
             $table->string('name');
             $table->boolean('active');
-            $table->unsignedBigInteger('facility_id');
             $table->timestamps();
         });
     }
