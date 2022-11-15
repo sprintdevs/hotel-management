@@ -1,6 +1,18 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const greetingMessage = ref('')
+
+const currentDate = new Date()
+
+if (currentDate.getHours() < 12) greetingMessage.value = 'Good Morning'
+else if (currentDate.getHours() >= 12 && currentDate.getHours() <= 17) greetingMessage.value = 'Good Afternoon'
+else if (currentDate.getHours() >= 17 && currentDate.getHours() <= 24) greetingMessage.value = 'Good Evening'
+</script>
+
 <template>
-    <header class="pl-6 pr-6 w-full overflow-hidden h-auto border-b-2 shadow-sm border-b-gray-200">
-        <div class="overflow-y-auto bg-white pt-5 pb-4">
+    <header class="px-6 bg-white w-full overflow-hidden h-auto border-b-2 shadow-sm border-b-gray-200">
+        <div class="overflow-y-auto pt-5 pb-4">
             <div class="mb-6 flex flex-1 flex-col" aria-label="TopBar">
                 <div class="flex items-center">
                     <label for="search" class="sr-only">Search</label>
@@ -18,8 +30,8 @@
                         </svg>
                     </button>
                     <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 inline-flex items-center px-4 text-sm text-center text-gray-900 hover:rounded-full" type="button">
-                        <img src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="mr-2 w-8 rounded-full" alt="" />
-                        <span class="font-semibold">John Doe</span>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80" class="mr-2 w-8 h-8 rounded-full object-cover" alt="" />
+                        <span class="font-semibold">Jane Smith</span>
                         <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="gray" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
@@ -44,10 +56,10 @@
             </div>
             <hr class="my-5 h-px ml-2 mr-2" />
             <div class="flex">
-                <img src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="mt-0 ml-2 w-24 rounded-full flex-none" alt="" />
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=144&h=144&q=80" class="mt-0 ml-2 w-24 h-24 rounded-full flex-none object-cover" alt="" />
 
                 <div class="flex-grow-1 ml-5 mt-3">
-                    <h3 class="font-sans text-3xl">Good Morning, John Doe <br /></h3>
+                    <h3 class="font-sans text-3xl">{{ greetingMessage }}, Jane Smith <br /></h3>
                     <div class="flex flex-row mt-3">
                         <svg class="w-6 h-6" fill="none" stroke="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
@@ -64,13 +76,3 @@
         </div>
     </header>
 </template>
-
-<!-- <script setup lang="ts">
-import { ref } from 'vue'
-
-const messsage = ref('Good Morning')
-
-const isMorning = () => {
-    return new Date().getHours() < 12 ? true : false
-}
-</script> -->
