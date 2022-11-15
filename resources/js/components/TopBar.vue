@@ -19,7 +19,7 @@
                     </button>
                     <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 inline-flex items-center px-4 text-sm text-center text-gray-900 hover:rounded-full" type="button">
                         <img src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="mr-2 w-8 rounded-full" alt="" />
-                        John Doe
+                        <span class="font-semibold">John Doe</span>
                         <svg aria-hidden="true" class="ml-1 w-4 h-4" fill="gray" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
