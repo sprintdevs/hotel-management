@@ -3,34 +3,28 @@ import DataGrid from '../DataGrid.vue'
 
 const facilityData = [
     {
-        facility_id: 1,
-        facility_name: 'Radisson',
+        name: 'Radisson',
         address: 'Street, City, State - ZIP',
         phone: '+8801837465987',
         email: 'radisson@email.com',
-        manager_name: 'John Doe',
-        manager_id: 1
+        manager: 'John Doe'
     },
     {
-        facility_id: 2,
-        facility_name: 'West-Inn',
+        name: 'West-Inn',
         address: 'Street, City, State - ZIP',
         phone: '+88018374112233',
         email: 'radisson@email.com',
-        manager_name: 'Will Jackson',
-        manager_id: 1
+        manager: 'Will Jackson'
     },
     {
-        facility_id: 3,
-        facility_name: 'Sheraton',
+        name: 'Sheraton',
         address: 'Street, City, State - ZIP',
         phone: '+880183223344',
         email: 'radisson@email.com',
-        manager_name: 'Michaed Smith',
-        manager_id: 1
+        manager: 'Michaed Smith'
     }
 ]
-const fields = ['facility_id', 'facility_name', 'address', 'phone', 'email', 'manager_name', 'manager_id']
+const fields = ['name', 'address', 'phone', 'email', 'manager']
 </script>
 
 <template>
