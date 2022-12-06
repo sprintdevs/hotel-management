@@ -48,7 +48,7 @@ defineProps<Props>()
 </script>
 
 <template>
-    <div>
+    <div class="px-5 py-5">
         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-white-500 dark:text-gray-400">
                 <thead class="text-xs text-white-700 uppercase text-white bg-cyan-700 rounded-r-lg border border-gray-300">
@@ -62,7 +62,7 @@ defineProps<Props>()
                         <td class="py-4 px-6" v-for="field in fields" :key="field">{{ item[field] }}</td>
                         <td class="py-4 px-6">
                             <button @click="deleteTableRow(index)">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-800 mr-2">
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -71,7 +71,7 @@ defineProps<Props>()
                                 </svg>
                             </button>
                             <button @click="editTableRow(index)">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-cyan-800 ml-2">
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -84,7 +84,7 @@ defineProps<Props>()
                 </tbody>
             </table>
         </div>
-        <div>
+        <div class="flex justify-center pt-3">
             <Pagination :totalPages="10" :perPage="10" :currentPage="currentPage" @pagechanged="onPageChange" />
         </div>
     </div>
