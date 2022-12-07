@@ -8,7 +8,7 @@ import TopBar from './TopBar.vue'
         <Navigation />
         <div class="flex flex-col flex-1 bg-gray-100">
             <TopBar />
-            <aside class="flex-1">
+            <aside class="flex-1 p-6">
                 <RouterView />
             </aside>
         </div>
