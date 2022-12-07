@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('floor_id');
             $table->string('name');
-            $table->enum('type', ['STANDARD', 'DUPLEX', 'DELUX']);
+            $table->string('type');
             $table->float('price');
-            $table->enum('bed_type', ['SINGLE', 'DOUBLE', 'KING', 'QUEEN']);
+            $table->string('bed_type');
             $table->integer('bed_count');
             $table->json('furniture');
             $table->boolean('balcony');
