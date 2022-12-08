@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import GridList from '../components/facilities/GridList.vue'
+</script>
 
 <template>
-    <div class="flex flex-row justify-between bg-gray-100 p-6 items-center">
+    <div class="flex flex-row justify-between bg-gray-100 items-center mb-6">
         <div class="flex flex-col justify-center">
             <h2 class="font-semibold text-lg">Facility</h2>
             <p class="text-gray-600">A list of all the facilities including their name, title, email and role</p>
@@ -12,4 +14,5 @@
             </RouterLink>
         </div>
     </div>
+    <GridList />
 </template>

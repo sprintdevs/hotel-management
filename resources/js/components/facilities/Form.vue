@@ -1,9 +1,7 @@
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <template>
-    <form action="submit" class="space-y-8 p-6">
+    <form action="submit" class="space-y-8">
         <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div class="sm:col-span-6">
                 <TextInput v-model="event.name" label="Name" type="text" />
