@@ -12,7 +12,7 @@ class RoomController extends Controller
         return request()->validate([
             'floor_id' => 'required|integer',
             'name' => 'required|alpha|max:255',
-            'type' => 'required|string',
+            'category' => 'required|string',
             'price' => 'required|numeric',
             'bed_type' => 'required|string',
             'bed_count' => 'required|integer',

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Enums\Room;
 
-enum RoomType: string
+enum Type: string
 {
     case Standard = 'standard';
     case Duplex = 'duplex';

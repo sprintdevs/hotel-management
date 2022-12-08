@@ -19,7 +19,7 @@ class RoomFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'type' => fake()->randomElement(['standard', 'duplex', 'delux']),
+            'category' => fake()->randomElement(['standard', 'duplex', 'delux']),
             'price' => fake()->randomFloat(2, 10, 1000),
             'bed_type' => fake()->randomElement(['single', 'double', 'king', 'queen']),
             'bed_count' => fake()->numberBetween(1, 3),

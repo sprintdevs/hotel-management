@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\RoomType;
-use App\Enums\RoomBedType;
+use App\Enums\Room\Type;
+use App\Enums\Room\BedType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,8 +15,8 @@ class Room extends Model
         'furniture' => 'array',
         'services' => 'array',
         'complimentaries' => 'array',
-        'type' => RoomType::class,
-        'bed_type' => RoomBedType::class
+        'category' => Type::class,
+        'bed_type' => BedType::class
     ];
 
     public function floor()

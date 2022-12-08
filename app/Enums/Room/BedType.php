@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Enums;
+namespace App\Enums\Room;
 
-enum RoomBedType: string
+enum BedType: string
 {
     case Single = 'single';
     case Double = 'double';

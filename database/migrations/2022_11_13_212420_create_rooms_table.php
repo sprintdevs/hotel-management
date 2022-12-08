@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('floor_id');
             $table->string('name');
-            $table->string('type');
+            $table->string('category');
             $table->float('price');
             $table->string('bed_type');
             $table->integer('bed_count');
