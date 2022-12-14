@@ -12,12 +12,12 @@ const isOpen = ref(false)
         <teleport to="body">
             <div v-if="isOpen">
                 <div class="absolute inset-0 max-h-screen bg-gray-700 bg-opacity-25">
-                    <div class="relative top-1/3 mx-auto border w-3/12 shadow-lg rounded-md bg-white">
+                    <div class="relative top-1/3 mx-auto border w-4/12 shadow-lg rounded-md bg-white">
                         <div class="flex flex-row gap-3 p-6">
                             <ExclamationCircle class="text-red-600 h-2/5 w-16 rounded-full bg-red-400 bg-opacity-30 p-3" />
                             <div>
-                                <h3 class="text-lg font-semibold">Delete Item</h3>
-                                <p class="text-gray-500 font-medium">Are you sure you want to delete this item? It will be deleted permanently and the action can not be undone</p>
+                                <h3 class="font-medium leading-6 text-gray-900">Delete Item</h3>
+                                <p class="text-gray-500 mt-2 text-sm">Are you sure you want to delete this item? It will be deleted permanently and the action can not be undone</p>
                             </div>
                         </div>
                         <div class="flex justify-end p-3 bg-gray-100 shadow-lg">
